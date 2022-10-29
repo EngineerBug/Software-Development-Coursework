@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Player implements Runnable{
     private int playerId;
     private PriorityBlockingQueue<Card> hand = new PriorityBlockingQueue<Card>();
-    private static ArrayList <Player> players = new ArrayList<Player>();
+    private static ArrayList<Player> players = new ArrayList<Player>();
     private static int winner = 0;
 
     public void setHand(Card newCard){
@@ -12,7 +12,22 @@ public class Player implements Runnable{
     public int getPlayerId(){
         return this.playerId;
     }
-    //From Ben: make a method that allows CardGame.java to read the ArrayList<Player> players.
+    public Card getHeadCard(){
+        try{
+            return hand.take();
+        }catch (InterruptedException e){
+            e.printStackTrace();
+            return new Card(0);
+        }
+    }
+    public void setTailCard(Card card){
+        this.hand.add(card);
+    }
+    public static ArrayList<Player> getPlayers(){
+        return players;
+    }
+    //From Ben: make a method that allows CardGame.java to read ArrayList<Player> players.
+    //p.s. also I put some useful videos in the CardGame.java file
 
     /**
      * Constructor method that sets player's id number and adds the player to a static list of players
