@@ -12,6 +12,8 @@ public class Player implements Runnable{
     public int getPlayerId(){
         return this.playerId;
     }
+    //From Ben: make a method that allows CardGame.java to read the ArrayList<Player> players.
+
     /**
      * Constructor method that sets player's id number and adds the player to a static list of players
      * @param playerId
