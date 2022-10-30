@@ -1,6 +1,5 @@
 import java.util.concurrent.PriorityBlockingQueue;
 import java.util.ArrayList;
-import java.util.concurrent.atomic.*;
 
 /*
  * Input/output:
@@ -30,6 +29,16 @@ public class Player implements Runnable{
     }
     public static ArrayList<Player> getPlayers(){
         return players;
+    }
+    public final synchronized Card discardCard(){
+        try{
+            return hand.take();
+        }catch (InterruptedException e){
+            return new Card(0);
+        }
+    }
+    public final synchronized void drawCard(Card card){
+        hand.add(card);
     }
 
     /**
@@ -62,7 +71,7 @@ public class Player implements Runnable{
         }else{
             discardDeck = CardDeck.getDecks().get(playerId+2);
         }
-        
+
         //print opening hand
         while (winner == 0){
             //check if this thread has won by all cards in its hand being the same
@@ -79,15 +88,5 @@ public class Player implements Runnable{
             }
         }
         //exit procedure
-    }
-    public final synchronized Card discardCard(){
-        try{
-            return hand.take();
-        }catch (InterruptedException e){
-            return new Card(0);
-        }
-    }
-    public final synchronized void drawCard(Card card){
-        hand.add(card);
     }
 }

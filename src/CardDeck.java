@@ -6,7 +6,7 @@ public class CardDeck {
     private PriorityBlockingQueue<Card> contents;
     private int deckId;
     
-    private static ArrayList<CardDeck> decks;
+    private static ArrayList<CardDeck> decks = new ArrayList<CardDeck>();
 
     //public setter/getter methods
     public int getId(){

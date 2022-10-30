@@ -57,6 +57,7 @@ public class CardGame {
         //start() the player threads
         //startPlayerThreads(Player.getPlayers());
     }
+
     /*
      * This method gets an input from the user and returns it as an Integer.
      * 
@@ -72,6 +73,7 @@ public class CardGame {
 
         return output;
     }
+
     /*
      * This method gets an input from the user and returns it as a string.
      * 
@@ -86,6 +88,7 @@ public class CardGame {
 
         return output;
     }
+
     /*
      * This method extracts all the numbers from the input file.
      * The numbers are then converted to cards and stored in the pack queue.
@@ -116,6 +119,7 @@ public class CardGame {
             pack.clear();
         }
     }
+
     /*
      * This method initialses all the player objects.
      * No thread is started at this point.
@@ -131,6 +135,7 @@ public class CardGame {
             new Player(i);
         }
     }
+
     /*
      * Create the deck objects.
      * Assign them to players as draw/discard piles
@@ -171,6 +176,7 @@ public class CardGame {
             }
         }
     }
+
     /*
      * Start the player threads by getting the static list of all players.
      * 
