@@ -26,6 +26,8 @@ public class CardDeck {
         this.deckId = deckId;
         //initialise the contents
         contents = new PriorityBlockingQueue<Card>();
+        //add the deck to the static arrayList
+        decks.add(this);
     }
 
     //toString() method

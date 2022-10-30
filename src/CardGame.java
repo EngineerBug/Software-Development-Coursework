@@ -43,19 +43,19 @@ public class CardGame {
             }
         }
         //initialise the player threads
-        //generatePlayerThreads(playerCount);
+        generatePlayerThreads(playerCount);
 
         //initialse the deck objects
-        //generateDecks(playerCount);
+        generateDecks(playerCount);
 
         //deal to the players, create the decks and deal to the decks
-        //dealToPlayers(pack);
+        dealToPlayers(pack);
 
         //deal to the decks
-        //dealToDecks(pack);
+        dealToDecks(pack);
 
         //start() the player threads
-        //startPlayerThreads(Player.getPlayers());
+        startPlayerThreads(Player.getPlayers());
     }
 
     /*

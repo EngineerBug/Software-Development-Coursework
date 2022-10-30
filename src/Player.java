@@ -64,12 +64,16 @@ public class Player implements Runnable{
     @Override
     public void run(){
         //determine draw and discard decks
-        CardDeck drawDeck = CardDeck.getDecks().get(playerId+1);
-        CardDeck discardDeck;
-        if (playerId == players.size()+1){
-            discardDeck = CardDeck.getDecks().get(0);
-        }else{
-            discardDeck = CardDeck.getDecks().get(playerId+2);
+        CardDeck drawDeck = null;
+        CardDeck discardDeck = null;
+        for (CardDeck deck: CardDeck.getDecks()){
+            if (deck.getId() == this.playerId){
+                drawDeck = deck;
+            } else if (deck.getId() == this.playerId+1){
+                discardDeck = deck;
+            } else if (this.playerId == CardDeck.getDecks().size()){
+                discardDeck = CardDeck.getDecks().get(0);
+            }
         }
 
         //print opening hand
@@ -82,7 +86,11 @@ public class Player implements Runnable{
                 try{
                     discardDeck.getContents().add(discardCard());
                     drawCard(drawDeck.getContents().take());
-                }catch(InterruptedException e){
+                }catch (InterruptedException e){
+                    //if there is an interupt, the thread will stop
+                    return;
+                }catch (NullPointerException e){
+                    //if discardDeck or drawDeck were not initialized, the thread will stop
                     return;
                 }
             }
