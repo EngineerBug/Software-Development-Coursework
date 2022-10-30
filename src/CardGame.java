@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.util.concurrent.PriorityBlockingQueue;
 import java.io.*;
+import java.util.ArrayList;
 
 /*
  * Input/output:
@@ -11,6 +12,8 @@ import java.io.*;
  * 
  * Testing:
  * https://www.youtube.com/watch?v=vZm0lHciFsQ
+ * 
+ * Important, compile using this command from outside the src file: javac -d ./bin/ ./src/*.java
  */
 
 public class CardGame {
@@ -40,13 +43,19 @@ public class CardGame {
             }
         }
         //initialise the player threads
-        initialisePlayerThreads(playerCount);
+        //generatePlayerThreads(playerCount);
 
-        //deal to the players
+        //initialse the deck objects
+        //generateDecks(playerCount);
+
+        //deal to the players, create the decks and deal to the decks
+        //dealToPlayers(pack);
 
         //deal to the decks
+        //dealToDecks(pack);
 
         //start() the player threads
+        //startPlayerThreads(Player.getPlayers());
     }
     /*
      * This method gets an input from the user and returns it as an Integer.
@@ -102,17 +111,14 @@ public class CardGame {
             br.close();
         }  
         catch(IOException e){
-            /*
-             * if there are not enough cards,
-             * the program will empty to pack 
-             * so that the game does not start.
-             */
+            //If there are not enough cards,the program 
+            //will empty to pack so that the game does not start.
             pack.clear();
         }
     }
     /*
-     * This method initialses all the player threads.
-     * No player thread is started at this point.
+     * This method initialses all the player objects.
+     * No thread is started at this point.
      * <p>
      * Because the players are stored in a static array in Player.class,
      * they can all be indapendantly accessed later to start() them.
@@ -120,14 +126,13 @@ public class CardGame {
      * @param int playerCount: the number of threads needing to be initialised.
      * @returns none
      */
-    static void initialisePlayerThreads(int playerCount){
+    static void generatePlayerThreads(int playerCount){
         for (int i = 1; i <= playerCount; i++) {
-            Player newPlayer = new Player(i);
-            Thread newThread = new Thread(newPlayer);
+            new Player(i);
         }
     }
     
-    static void dealCards(PriorityBlockingQueue<Card> pack){
+    static void dealToPlayers(PriorityBlockingQueue<Card> pack){
         //deal to the players
         for (int i = 0; i < 4; i++){
             //deal a single card to each player, four times (hence two loops)
@@ -139,21 +144,44 @@ public class CardGame {
                 }
             }
         }
-        //create the decks
+    }
 
+    static void dealToDecks(PriorityBlockingQueue<Card> pack){
         //deal to the decks
+        for (int i = 0; i < 4; i++){
+            //deal a single card to each deck, four times (hence two loops)
+            for (CardDeck deck: CardDeck.getDecks()){
+                try{
+                    deck.getContents().add(pack.take());
+                }catch(InterruptedException e){
+                    return;
+                }
+            }
+        }
     }
     /*
-     * Deal to the decks
+     * Create the deck objects.
+     * Assign them to players as draw/discard piles
      * 
      * @param none.
      * @return none.
      */
+    static void generateDecks(int playerCount){
+        for (int i = 1; i <= playerCount; i++){
+            new CardDeck(i);
+        }
+    }
 
     /*
-     * Start the player threads
+     * Start the player threads by getting the static list of all players.
      * 
      * @param none.
      * @return none.
      */
+    static void startPlayerThreads(ArrayList<Player> players){
+        for (Player player: players){
+            Thread newThread = new Thread(player);
+            newThread.start();
+        }
+    }
 }

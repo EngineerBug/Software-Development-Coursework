@@ -1,10 +1,13 @@
 public class Card implements Comparable<Card>{
+    //private attributes
     private int value;
 
+    //public setter/getter methods
     public int getValue(){
         return this.value;
     }
 
+    //constructor
     public Card(int value){
         this.value = value;
     }
