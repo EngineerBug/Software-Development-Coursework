@@ -21,7 +21,7 @@ public class CardGame {
         System.out.println("Hello Patryk, what do you think of my code?");
         
         //create variables
-        //this valueable is an integer so that we can use the Integer.valueOf() method.
+        //this variable is an integer so that we can use the Integer.valueOf() method.
         Integer playerCount = 0;
         final PriorityBlockingQueue<Card> pack = new PriorityBlockingQueue<Card>();
         Scanner scanner = new Scanner(System.in);
@@ -131,6 +131,18 @@ public class CardGame {
             new Player(i);
         }
     }
+    /*
+     * Create the deck objects.
+     * Assign them to players as draw/discard piles
+     * 
+     * @param none.
+     * @return none.
+     */
+    static void generateDecks(int playerCount){
+        for (int i = 1; i <= playerCount; i++){
+            new CardDeck(i);
+        }
+    }
     
     static void dealToPlayers(PriorityBlockingQueue<Card> pack){
         //deal to the players
@@ -159,19 +171,6 @@ public class CardGame {
             }
         }
     }
-    /*
-     * Create the deck objects.
-     * Assign them to players as draw/discard piles
-     * 
-     * @param none.
-     * @return none.
-     */
-    static void generateDecks(int playerCount){
-        for (int i = 1; i <= playerCount; i++){
-            new CardDeck(i);
-        }
-    }
-
     /*
      * Start the player threads by getting the static list of all players.
      * 

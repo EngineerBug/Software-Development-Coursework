@@ -1,5 +1,6 @@
 import java.util.concurrent.PriorityBlockingQueue;
 import java.util.ArrayList;
+import java.util.concurrent.atomic.*;
 
 /*
  * Input/output:
@@ -53,38 +54,40 @@ public class Player implements Runnable{
     }
     @Override
     public void run(){
+        //determine draw and discard decks
+        CardDeck drawDeck = CardDeck.getDecks().get(playerId+1);
+        CardDeck discardDeck;
+        if (playerId == players.size()+1){
+            discardDeck = CardDeck.getDecks().get(0);
+        }else{
+            discardDeck = CardDeck.getDecks().get(playerId+2);
+        }
+        
         //print opening hand
         while (winner == 0){
             //check if this thread has won by all cards in its hand being the same
             if (this.hand.stream().distinct().count() <= 1){
                 winner = playerId;
-                //print to file
             }else{
-                //check if \nother thread has won
-                if (winner == 0){
-                    //draw
-                    //discard
-                }else{
-                    //interrupt
+                //draw and discard a card.
+                try{
+                    discardDeck.getContents().add(discardCard());
+                    drawCard(drawDeck.getContents().take());
+                }catch(InterruptedException e){
+                    return;
                 }
             }
-            //Thread.yield();
         }
-        //exit
-        //print ending status
+        //exit procedure
     }
-    /*
-     * An atomic action action designed to draw and discard 
-     * a card from a players hand such that the hand size is always 4.
-     */
-    public Card discardCard(){
+    public final synchronized Card discardCard(){
         try{
             return hand.take();
         }catch (InterruptedException e){
             return new Card(0);
         }
     }
-    public void drawCard(Card card){
+    public final synchronized void drawCard(Card card){
         hand.add(card);
     }
 }
