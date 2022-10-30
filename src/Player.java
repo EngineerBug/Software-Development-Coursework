@@ -1,18 +1,27 @@
 import java.util.concurrent.PriorityBlockingQueue;
 import java.util.ArrayList;
+
+/*
+ * Important, compile using this command from outside the src file: javac -d ./bin/ ./src/*.java
+ * <p>
+ */
 public class Player implements Runnable{
     private int playerId;
-    private PriorityBlockingQueue<Card> hand = new PriorityBlockingQueue<Card>();
+    private PriorityBlockingQueue<Card> hand;
+    //private PriorityBlockingQueue<Card> drawPile;
+    //private PriorityBlockingQueue<Card> discardPile;
     private static ArrayList<Player> players = new ArrayList<Player>();
     private static int winner = 0;
 
-    public void setHand(Card newCard){
-        this.hand.add(newCard);
-    }
+    /*
+     * A getter method for the private attribute playerId.
+     * @param none
+     * @return the int player Id.
+     */
     public int getPlayerId(){
         return this.playerId;
     }
-    public Card getHeadCard(){
+    public Card discardCard(){
         try{
             return hand.take();
         }catch (InterruptedException e){
@@ -20,21 +29,23 @@ public class Player implements Runnable{
             return new Card(0);
         }
     }
-    public void setTailCard(Card card){
+    public void drawCard(Card card){
         this.hand.add(card);
     }
     public static ArrayList<Player> getPlayers(){
         return players;
     }
-    //From Ben: make a method that allows CardGame.java to read ArrayList<Player> players.
-    //p.s. also I put some useful videos in the CardGame.java file
 
     /**
      * Constructor method that sets player's id number and adds the player to a static list of players
      * @param playerId
      */
     public Player(int playerId){
+        //assign the playerId
         this.playerId = playerId;
+        //assign the player an empty hand
+        this.hand = new PriorityBlockingQueue<Card>();
+        //add the player to the static list of players
         players.add(this);
     }
     public String toString(){

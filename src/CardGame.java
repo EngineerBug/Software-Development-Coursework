@@ -18,6 +18,7 @@ public class CardGame {
         System.out.println("Hello Patryk, what do you think of my code?");
         
         //create variables
+        //this valueable is an integer so that we can use the Integer.valueOf() method.
         Integer playerCount = 0;
         final PriorityBlockingQueue<Card> pack = new PriorityBlockingQueue<Card>();
         Scanner scanner = new Scanner(System.in);
@@ -50,7 +51,7 @@ public class CardGame {
     /*
      * This method gets an input from the user and returns it as an Integer.
      * 
-     * @param Scanner scanPack: the current scanner object.
+     * @param Scanner scanPlayers: the current scanner object.
      * @returns none
      */
     static Integer getPlayers(Scanner scanPlayers){
@@ -100,13 +101,21 @@ public class CardGame {
             //close the stream
             br.close();
         }  
-        catch(IOException e){  
+        catch(IOException e){
+            /*
+             * if there are not enough cards,
+             * the program will empty to pack 
+             * so that the game does not start.
+             */
             pack.clear();
         }
     }
     /*
      * This method initialses all the player threads.
      * No player thread is started at this point.
+     * <p>
+     * Because the players are stored in a static array in Player.class,
+     * they can all be indapendantly accessed later to start() them.
      * 
      * @param int playerCount: the number of threads needing to be initialised.
      * @returns none
@@ -121,14 +130,30 @@ public class CardGame {
     static void dealCards(PriorityBlockingQueue<Card> pack){
         //deal to the players
         for (int i = 0; i < 4; i++){
-            //deal a single card to each player, four times
+            //deal a single card to each player, four times (hence two loops)
             for (Player player: Player.getPlayers()){
                 try{
-                    player.setTailCard(pack.take());
+                    player.drawCard(pack.take());
                 }catch(InterruptedException e){
                     return;
                 }
             }
         }
+        //create the decks
+
+        //deal to the decks
     }
+    /*
+     * Deal to the decks
+     * 
+     * @param none.
+     * @return none.
+     */
+
+    /*
+     * Start the player threads
+     * 
+     * @param none.
+     * @return none.
+     */
 }
