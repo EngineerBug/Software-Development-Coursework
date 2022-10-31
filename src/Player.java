@@ -30,7 +30,7 @@ public class Player implements Runnable{
     public static ArrayList<Player> getPlayers(){
         return players;
     }
-    public final synchronized Card discardCard(){
+    public synchronized Card discardCard(){
         try{
             //go through the hand, moving prefered cards to the back until one is ok to discard.
             while (hand.peek().getValue() == playerId){
@@ -42,7 +42,7 @@ public class Player implements Runnable{
             return new Card(0);
         }
     }
-    public final synchronized void drawCard(Card card){
+    public synchronized void drawCard(Card card){
         hand.add(card);
     }
 

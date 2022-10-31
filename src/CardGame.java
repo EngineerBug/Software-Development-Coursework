@@ -105,8 +105,8 @@ public class CardGame {
             String line = br.readLine();
             //while the next read line is not null, write it to pack.
             for (int i = 0; i < 8*playerCount; i++) {
-                Card nextCard = new Card(Integer.valueOf(line));
-                pack.add(nextCard);
+                //add the next line to the pack as a new card object
+                pack.add(new Card(Integer.valueOf(line)));
                 //load the next line
                 line = br.readLine();
             }
