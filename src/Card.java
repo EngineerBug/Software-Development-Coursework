@@ -12,8 +12,9 @@ public class Card implements Comparable<Card>{
         this.value = value;
     }
 
+    //public toString method
     public String toString(){
-        return "The value of this card is: "+this.value;
+        return String.valueOf(this.value);
     }
 
     @Override

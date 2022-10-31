@@ -1,0 +1,48 @@
+    @Override
+    public void run(){
+        //determine draw and discard decks
+        CardDeck drawDeck = null;
+        CardDeck discardDeck = null;
+        for (CardDeck deck: CardDeck.getDecks()){
+            if (deck.getId() == this.playerId){
+                drawDeck = deck;
+                //System.out.println("Player "+this.playerId+"'s draw deck is: "+deck.getId());
+            } else if (deck.getId() == this.playerId+1){
+                discardDeck = deck;
+                //System.out.println("Player "+this.playerId+"'s discard deck is: "+deck.getId());
+            } else if (this.playerId == CardDeck.getDecks().size()){
+                discardDeck = CardDeck.getDecks().get(0);
+                //System.out.println("Player "+this.playerId+"'s discard deck is: "+deck.getId());
+            }
+        }
+
+        //print opening hand
+        while (winner == 0){
+            //System.out.println("Player "+this.playerId+"'s hand is: "+this.hand.toString());
+            //check if this thread has won by all cards in its hand being the same
+            if (this.hand.stream().distinct().count() <= 1){
+                winner = playerId;
+            }else{
+                //draw and discard a card.
+                try{
+                    //discard a card
+                    Card discardCard = discardCard();
+                    discardDeck.getContents().add(discardCard);
+                    //System.out.println("Player "+playerId+" discards a "+discardCard);
+                    //draw a new card and tell the overseer about it.
+                    Card newCard = drawDeck.getContents().take();
+                    drawCard(newCard);
+                    //System.out.println("Player "+playerId+" draws a "+newCard.getValue());
+                }catch (InterruptedException e){
+                    //if there is an interupt, the thread will stop
+                    return;
+                }catch (NullPointerException e){
+                    //if discardDeck or drawDeck were not initialized, the thread will stop
+                    return;
+                }
+                System.out.println("Player "+playerId+"'s hand is: "+hand.toString());
+            }
+        }
+        //exit procedure
+        System.out.println("Done");
+    }

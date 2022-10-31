@@ -32,8 +32,13 @@ public class Player implements Runnable{
     }
     public final synchronized Card discardCard(){
         try{
+            //go through the hand, moving prefered cards to the back until one is ok to discard.
+            while (hand.peek().getValue() == playerId){
+                hand.add(hand.take());
+            }
             return hand.take();
         }catch (InterruptedException e){
+            //if the system is interupted, a dud card is added because no one will need it.
             return new Card(0);
         }
     }
@@ -63,38 +68,6 @@ public class Player implements Runnable{
     }
     @Override
     public void run(){
-        //determine draw and discard decks
-        CardDeck drawDeck = null;
-        CardDeck discardDeck = null;
-        for (CardDeck deck: CardDeck.getDecks()){
-            if (deck.getId() == this.playerId){
-                drawDeck = deck;
-            } else if (deck.getId() == this.playerId+1){
-                discardDeck = deck;
-            } else if (this.playerId == CardDeck.getDecks().size()){
-                discardDeck = CardDeck.getDecks().get(0);
-            }
-        }
-
-        //print opening hand
-        while (winner == 0){
-            //check if this thread has won by all cards in its hand being the same
-            if (this.hand.stream().distinct().count() <= 1){
-                winner = playerId;
-            }else{
-                //draw and discard a card.
-                try{
-                    discardDeck.getContents().add(discardCard());
-                    drawCard(drawDeck.getContents().take());
-                }catch (InterruptedException e){
-                    //if there is an interupt, the thread will stop
-                    return;
-                }catch (NullPointerException e){
-                    //if discardDeck or drawDeck were not initialized, the thread will stop
-                    return;
-                }
-            }
-        }
-        //exit procedure
+        System.out.println("Player "+playerId+"'s initial hand: "+hand.toString());   
     }
 }
