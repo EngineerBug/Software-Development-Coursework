@@ -42,11 +42,11 @@ public class CardGame {
                 System.out.println("Required card count: "+8*playerCount+", you put: "+pack.size());
             }
         }
-        //initialise the player threads
-        generatePlayerThreads(playerCount);
-
         //initialse the deck objects
         generateDecks(playerCount);
+
+        //initialise the player threads
+        generatePlayerThreads(playerCount);
 
         //deal to the players, create the decks and deal to the decks
         dealToPlayers(pack);
@@ -123,6 +123,8 @@ public class CardGame {
     /*
      * This method initialses all the player objects.
      * No thread is started at this point.
+     * An additional parameter is passed to notify the constructor when the last player is being 
+     * created as they need to be linked to Deck 1 as their discard deck
      * <p>
      * Because the players are stored in a static array in Player.class,
      * they can all be indapendantly accessed later to start() them.
@@ -132,7 +134,11 @@ public class CardGame {
      */
     static void generatePlayerThreads(int playerCount){
         for (int i = 1; i <= playerCount; i++) {
-            new Player(i);
+            Boolean lastPlayer = false;
+            if (i == playerCount) {
+                lastPlayer = true;
+            }
+            new Player(i,lastPlayer);
         }
     }
 
