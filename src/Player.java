@@ -82,6 +82,7 @@ public class Player implements Runnable{
     public String toString(){
         return ("This is player "+this.playerId+" who has a hand of "+this.hand);
     }
+    
     @Override
     public void run(){
         System.out.println("Player "+playerId+"'s initial hand: "+hand.toString());   
