@@ -19,7 +19,7 @@ public class Player implements Runnable{
     private static ArrayList<Player> players = new ArrayList<Player>();
     private CardDeck drawDeck;
     private CardDeck discardDeck;
-    private static int winner = 0;
+    private int winner;
 
     /**
      * Constructor method that 
@@ -47,6 +47,9 @@ public class Player implements Runnable{
                 this.discardDeck = deck;
             }
         }
+        //set winner as no one
+        winner = 0;
+
         
         //add the player to the static list of players
         players.add(this);
@@ -85,6 +88,43 @@ public class Player implements Runnable{
     
     @Override
     public void run(){
-        System.out.println("Player "+playerId+"'s initial hand: "+hand.toString());   
+        System.out.println("player "+playerId +" initial hand: "+ hand.toString());
+        //print opening hand
+        while (winner == 0){
+            //System.out.println("Player "+this.playerId+"'s hand is: "+this.hand.toString());
+            //check if this thread has won by all cards in its hand being the same
+            if (this.hand.stream().distinct().count() <= 1){
+                for (Player player : players){
+                    player.winner = this.playerId;
+                }
+            }else{
+                //draw and discard a card.
+                try{
+                    //draw a new card and tell the overseer about it.
+                    Card newCard = drawDeck.getContents().take();
+                    drawCard(newCard);
+                    System.out.println("Player "+playerId+" draws a "+newCard.getValue()+" from deck"+drawDeck.getId());
+                    //discard a card
+                    Card discardCard = discardCard();
+                    discardDeck.getContents().add(discardCard);
+                    System.out.println("Player "+playerId+" discards a "+discardCard+" to deck "+discardDeck.getId());
+                }catch (InterruptedException e){
+                    //if there is an interupt, the thread will stop
+                    // With the new while loop I dont think this is necessary anymore but Ive left it in just in case
+                    return;
+                }catch (NullPointerException e){
+                    //if discardDeck or drawDeck were not initialized, the thread will stop
+                    return;
+                }
+                System.out.println("Player "+playerId+" current hand is: "+hand.toString());
+            }
+        }
+        if (winner == playerId){
+            System.out.println("Player "+playerId+" wins");
+        }else{
+            System.out.println("player"+winner+"has	informed player"+playerId+" that player "+winner+" has won");
+        }
+        System.out.println("Player "+playerId+" exits");
+        System.out.println("Player "+playerId+" final hand: "+hand.toString());
     }
 }

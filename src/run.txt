@@ -1,16 +1,11 @@
     @Override
     public void run(){
         //print opening hand
-        while (winner == 0 && !Thread.currentThread().isInterrupted()){
+        while (winner == 0){
             //System.out.println("Player "+this.playerId+"'s hand is: "+this.hand.toString());
             //check if this thread has won by all cards in its hand being the same
             if (this.hand.stream().distinct().count() <= 1){
                 winner = playerId;
-                for (Player player: Player.getPlayers()){
-                    if (player.playerId != this.playerId){
-                        player.interrupt();
-                    }
-                }
             }else{
                 //draw and discard a card.
                 try{
