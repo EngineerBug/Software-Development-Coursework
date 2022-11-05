@@ -1,9 +1,9 @@
-import java.util.concurrent.PriorityBlockingQueue;
+import java.util.concurrent.*;
 import java.util.ArrayList;
 
 public class CardDeck {
     //private attributes
-    private PriorityBlockingQueue<Card> contents;
+    private BlockingQueue<Card> contents;
     private int deckId;
     
     private static ArrayList<CardDeck> decks = new ArrayList<CardDeck>();
@@ -12,7 +12,7 @@ public class CardDeck {
     public int getId(){
         return deckId;
     }
-    public PriorityBlockingQueue<Card> getContents(){
+    public BlockingQueue<Card> getContents(){
         return contents;
     }
 

@@ -1,5 +1,5 @@
 import java.util.Scanner;
-import java.util.concurrent.PriorityBlockingQueue;
+import java.util.concurrent.*;
 import java.io.*;
 import java.util.ArrayList;
 
@@ -23,7 +23,7 @@ public class CardGame {
         //create variables
         //this variable is an integer so that we can use the Integer.valueOf() method.
         Integer playerCount = 0;
-        final PriorityBlockingQueue<Card> pack = new PriorityBlockingQueue<Card>();
+        BlockingQueue<Card> pack = new LinkedBlockingDeque<>();
         Scanner scanner = new Scanner(System.in);
 
         //get inputs from user
@@ -96,7 +96,7 @@ public class CardGame {
      * @param String filename: the name of the file with numbers stored in it.
      * @returns none
      */
-    static void generatePack(String fileName, PriorityBlockingQueue<Card> pack, int playerCount){
+    static void generatePack(String fileName, BlockingQueue<Card> pack, int playerCount){
         try{
             //create an object which can read the file     
             BufferedReader br = new BufferedReader(
@@ -155,7 +155,7 @@ public class CardGame {
         }
     }
     
-    static void dealToPlayers(PriorityBlockingQueue<Card> pack){
+    static void dealToPlayers(BlockingQueue<Card> pack){
         //deal to the players
         for (int i = 0; i < 4; i++){
             //deal a single card to each player, four times (hence two loops)
@@ -169,7 +169,7 @@ public class CardGame {
         }
     }
 
-    static void dealToDecks(PriorityBlockingQueue<Card> pack){
+    static void dealToDecks(BlockingQueue<Card> pack){
         //deal to the decks
         for (int i = 0; i < 4; i++){
             //deal a single card to each deck, four times (hence two loops)
