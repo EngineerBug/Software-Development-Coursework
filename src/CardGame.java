@@ -23,7 +23,7 @@ public class CardGame {
         //create variables
         //this variable is an integer so that we can use the Integer.valueOf() method.
         Integer playerCount = 0;
-        BlockingQueue<Card> pack = new LinkedBlockingDeque<>();
+        BlockingQueue<Card> pack = new LinkedBlockingDeque<Card>();
         Scanner scanner = new Scanner(System.in);
 
         //get inputs from user
