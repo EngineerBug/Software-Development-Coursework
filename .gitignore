@@ -1,3 +1,4 @@
-bin
+bin/*.class
 src/*.class
 src/Test.java
+lib
