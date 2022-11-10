@@ -1,12 +1,22 @@
+import static org.junit.Assert.assertTrue;
+import org.junit.Test;
+
 public class TestPlayer {
     /*
      * testConstructorDraw()
      * Do players choose the correct draw pile?
      * 
-     * Create a Player with playerId = 5 and a cardDeck with deckId = 5.
+     * Create a Player with playerId = 1 and a cardDeck with deckId = 1.
      * If the Player is assigned the cardDeck as their draw pile, the test passes.
      */
-    
+    @Test
+    public void testConstructorDraw(){
+        CardDeck deck = new CardDeck(1);
+        Player player = new Player(1,true);
+
+        assert player.getDrawId() == deck.getId();
+    }
+
     /*
      * testConstructorDiscard()
      * Do players choose the correct discard pile?
@@ -14,22 +24,55 @@ public class TestPlayer {
      * Create a Player with playerId = 5 and a cardDeck with deckId = 6.
      * If the Player is assigned the cardDeck as their discard pile, the test passes.
      */
+    @Test
+    public void testConstructorDiscard(){
+        CardDeck deck = new CardDeck(1);
+        Player player = new Player(1,true);
+
+        assert player.getDiscardId() == deck.getId();
+    }
 
     /*
      * testDiscard()
      * Do players discard the first card in their hand if it isn't the preferred card?
      * 
-     * Create a Player with playerId = 1 with a hand 2234.
-     * If the hand after executing the discardCard() function is 234 the test passes.
+     * Create a Player with playerId = 1 with a hand 2345.
+     * If the hand after executing the discardCard() function is 345, the test passes.
      */
+    @Test
+    public void testDiscard(){
+        Player player = new Player(1,true);
+        for (int i = 2; i <= 5; i++){
+            player.getHand().add(new Card(i));
+        }
+        player.discardCard();
+
+        assert player.getHand().poll().getValue() == 3;
+        assert player.getHand().poll().getValue() == 4;
+        assert player.getHand().poll().getValue() == 5;
+        assertTrue(player.getHand().isEmpty());
+    }
 
     /*
      * testDiscard2()
      * Repeat testDiscard() with playerId = 2. 
      * 
      * Create a Player with playerId = 2 with a hand 1234.
-     * If the hand after executing the discardCard() function is 234 the test passes.
+     * If the hand after executing the discardCard() function is 234, the test passes.
      */
+    @Test
+    public void testDiscard2(){
+        Player player = new Player(2,true);
+        for (int i = 1; i <= 4; i++){
+            player.getHand().add(new Card(i));
+        }
+        player.discardCard();
+
+        assert player.getHand().poll().getValue() == 2;
+        assert player.getHand().poll().getValue() == 3;
+        assert player.getHand().poll().getValue() == 4;
+        assertTrue(player.getHand().isEmpty());
+    }
 
     /*
      * testDiscardCycle()
@@ -38,14 +81,40 @@ public class TestPlayer {
      * Create a Player with playerId = 1 with a hand 1234.
      * If the hand after executing the discardCard() function is 341 the test passes.
      */
+    @Test
+    public void testDiscardCycle(){
+        Player player = new Player(1,true);
+        for (int i = 1; i <= 4; i++){
+            player.getHand().add(new Card(i));
+        }
+        player.discardCard();
+
+        assert player.getHand().poll().getValue() == 3;
+        assert player.getHand().poll().getValue() == 4;
+        assert player.getHand().poll().getValue() == 1;
+        assertTrue(player.getHand().isEmpty());
+    }
 
     /*
      * testDiscardCycle2()
      * Repeat testDiscardCycle() with playerId = 2. 
      * 
-     * Create a Player with playerId = 2 with a hand 2134.
-     * If the hand after executing the discardCard() function is 342 the test passes.
+     * Create a Player with playerId = 2 with a hand 2345.
+     * If the hand after executing the discardCard() function is 452 the test passes.
      */
+    @Test
+    public void testDiscardCycle2(){
+        Player player = new Player(2,true);
+        for (int i = 2; i <= 5; i++){
+            player.getHand().add(new Card(i));
+        }
+        player.discardCard();
+
+        assert player.getHand().poll().getValue() == 4;
+        assert player.getHand().poll().getValue() == 5;
+        assert player.getHand().poll().getValue() == 2;
+        assertTrue(player.getHand().isEmpty());
+    }
 
     /*
      * testDiscardFullCycle()
@@ -54,6 +123,20 @@ public class TestPlayer {
      * Create a Player with playerId = 1 with a hand 1112.
      * If the hand after executing the discardCard() function is 111 the test passes.
      */
+    @Test
+    public void testDiscardFullCycle(){
+        Player player = new Player(1,true);
+        for (int i = 1; i <= 3; i++){
+            player.getHand().add(new Card(1));
+        }
+        player.getHand().add(new Card(2));
+        player.discardCard();
+
+        assert player.getHand().poll().getValue() == 1;
+        assert player.getHand().poll().getValue() == 1;
+        assert player.getHand().poll().getValue() == 1;
+        assertTrue(player.getHand().isEmpty());
+    }
 
     /*
      * testDiscardFullCycle2()
@@ -62,6 +145,20 @@ public class TestPlayer {
      * Create a Player with playerId = 2 with a hand 2221.
      * If the hand after executing the discardCard() function is 222 the test passes.
      */
+    @Test
+    public void testDiscardFullCycle2(){
+        Player player = new Player(2,true);
+        for (int i = 1; i <= 3; i++){
+            player.getHand().add(new Card(2));
+        }
+        player.getHand().add(new Card(1));
+        player.discardCard();
+
+        assert player.getHand().poll().getValue() == 2;
+        assert player.getHand().poll().getValue() == 2;
+        assert player.getHand().poll().getValue() == 2;
+        assertTrue(player.getHand().isEmpty());
+    }
 
     /*
      * testWinningAtStart()

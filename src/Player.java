@@ -21,7 +21,7 @@ public class Player implements Runnable{
     private CardDeck discardDeck;
     private int winner;
 
-    /**
+    /*
      * Constructor method that 
      *      - sets player's id number
      *      - initialises the player's hand
@@ -41,9 +41,10 @@ public class Player implements Runnable{
         for (CardDeck deck: CardDeck.getDecks()){
             if (deck.getId()==playerId){
                 this.drawDeck = deck;
-            }else if ((deck.getId()-1) == playerId){
+            }
+            if ((deck.getId()-1) == playerId){
                 this.discardDeck = deck;
-            }else if (deck.getId()==1 && lastPlayer == true){
+            } else if (deck.getId()==1 && lastPlayer == true){
                 this.discardDeck = deck;
             }
         }
@@ -62,6 +63,18 @@ public class Player implements Runnable{
      */
     public int getPlayerId(){
         return playerId;
+    }
+    //this method is used in testing
+    public int getDrawId(){
+        return drawDeck.getId();
+    }
+    //this method is used in testing
+    public int getDiscardId(){
+        return discardDeck.getId();
+    }
+    //this method is used in testing
+    public BlockingQueue<Card> getHand(){
+        return hand;
     }
     public static ArrayList<Player> getPlayers(){
         return players;
