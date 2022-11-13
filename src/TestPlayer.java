@@ -165,7 +165,7 @@ public class TestPlayer {
      * Do players declare victory if they start the game with a winning hand?
      * 
      * Create a Player with playerId = 1 with a hand 1111.
-     * If the static varialbe winner is changed to 1, the test passes.
+     * If the static variable winner is changed to 1, the test passes.
      */
 
     /*
