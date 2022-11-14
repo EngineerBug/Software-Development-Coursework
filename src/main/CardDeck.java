@@ -1,5 +1,8 @@
 package main;
 import java.util.concurrent.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 //import java.io.BufferedWriter;
 
@@ -35,5 +38,17 @@ public class CardDeck {
     //toString() method
     public String toString(){
         return "This deck is labeled "+deckId+" contains "+contents.toString()+".";
+    }
+
+    public void writeContents(){
+        try {
+            BufferedWriter writer = new BufferedWriter(
+                new FileWriter("deck"+deckId+"_output.txt")
+            );
+            writer.write("Deck"+deckId+" contents: "+getContents().toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

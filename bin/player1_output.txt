@@ -3,12 +3,72 @@ Player 1 discards a 2 to deck 2
 Player 1 draws a 67 from deck 1
 Player 1 current hand is: [4, 1, 1, 67]
 Player 1 discards a 4 to deck 2
-Player 1 draws a 1 from deck 1
-Player 1 current hand is: [1, 1, 67, 1]
-Player 1 discards a 67 to deck 2
 Player 1 draws a 2 from deck 1
-Player 1 current hand is: [1, 1, 1, 2]
+Player 1 current hand is: [1, 1, 67, 2]
+Player 1 discards a 67 to deck 2
+Player 1 draws a 1 from deck 1
+Player 1 current hand is: [2, 1, 1, 1]
 Player 1 discards a 2 to deck 2
+Player 1 draws a 130 from deck 1
+Player 1 current hand is: [1, 1, 1, 130]
+Player 1 discards a 130 to deck 2
+Player 1 draws a 15 from deck 1
+Player 1 current hand is: [1, 1, 1, 15]
+Player 1 discards a 15 to deck 2
+Player 1 draws a 34 from deck 1
+Player 1 current hand is: [1, 1, 1, 34]
+Player 1 discards a 34 to deck 2
+Player 1 draws a 6 from deck 1
+Player 1 current hand is: [1, 1, 1, 6]
+Player 1 discards a 6 to deck 2
+Player 1 draws a 4 from deck 1
+Player 1 current hand is: [1, 1, 1, 4]
+Player 1 discards a 4 to deck 2
+Player 1 draws a 67 from deck 1
+Player 1 current hand is: [1, 1, 1, 67]
+Player 1 discards a 67 to deck 2
+Player 1 draws a 130 from deck 1
+Player 1 current hand is: [1, 1, 1, 130]
+Player 1 discards a 130 to deck 2
+Player 1 draws a 15 from deck 1
+Player 1 current hand is: [1, 1, 1, 15]
+Player 1 discards a 15 to deck 2
+Player 1 draws a 34 from deck 1
+Player 1 current hand is: [1, 1, 1, 34]
+Player 1 discards a 34 to deck 2
+Player 1 draws a 6 from deck 1
+Player 1 current hand is: [1, 1, 1, 6]
+Player 1 discards a 6 to deck 2
+Player 1 draws a 4 from deck 1
+Player 1 current hand is: [1, 1, 1, 4]
+Player 1 discards a 4 to deck 2
+Player 1 draws a 67 from deck 1
+Player 1 current hand is: [1, 1, 1, 67]
+Player 1 discards a 67 to deck 2
+Player 1 draws a 130 from deck 1
+Player 1 current hand is: [1, 1, 1, 130]
+Player 1 discards a 130 to deck 2
+Player 1 draws a 15 from deck 1
+Player 1 current hand is: [1, 1, 1, 15]
+Player 1 discards a 15 to deck 2
+Player 1 draws a 34 from deck 1
+Player 1 current hand is: [1, 1, 1, 34]
+Player 1 discards a 34 to deck 2
+Player 1 draws a 6 from deck 1
+Player 1 current hand is: [1, 1, 1, 6]
+Player 1 discards a 6 to deck 2
+Player 1 draws a 4 from deck 1
+Player 1 current hand is: [1, 1, 1, 4]
+Player 1 discards a 4 to deck 2
+Player 1 draws a 67 from deck 1
+Player 1 current hand is: [1, 1, 1, 67]
+Player 1 discards a 67 to deck 2
+Player 1 draws a 130 from deck 1
+Player 1 current hand is: [1, 1, 1, 130]
+Player 1 discards a 130 to deck 2
+Player 1 draws a 15 from deck 1
+Player 1 current hand is: [1, 1, 1, 15]
+Player 1 discards a 15 to deck 2
 Player 1 draws a 1 from deck 1
 Player 1 current hand is: [1, 1, 1, 1]
 Player 1 wins

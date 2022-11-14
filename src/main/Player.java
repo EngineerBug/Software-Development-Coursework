@@ -124,6 +124,9 @@ public class Player implements Runnable{
                     for (Player player : players){
                         player.winner = this.playerId;
                     }
+                    for (CardDeck deck : CardDeck.getDecks()){
+                        deck.writeContents();
+                    }
                 }else{
                     //draw and discard a card.
                     try{

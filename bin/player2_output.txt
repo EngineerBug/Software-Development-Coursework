@@ -6,14 +6,74 @@ Player 2 discards a 1 to deck 1
 Player 2 draws a 6 from deck 2
 Player 2 current hand is: [130, 15, 34, 6]
 Player 2 discards a 130 to deck 1
-Player 2 draws a 4 from deck 2
-Player 2 current hand is: [15, 34, 6, 4]
-Player 2 discards a 15 to deck 1
-Player 2 draws a 67 from deck 2
-Player 2 current hand is: [34, 6, 4, 67]
-Player 2 discards a 34 to deck 1
 Player 2 draws a 2 from deck 2
-Player 2 current hand is: [6, 4, 67, 2]
+Player 2 current hand is: [15, 34, 6, 2]
+Player 2 discards a 15 to deck 1
+Player 2 draws a 4 from deck 2
+Player 2 current hand is: [34, 6, 2, 4]
+Player 2 discards a 34 to deck 1
+Player 2 draws a 67 from deck 2
+Player 2 current hand is: [6, 2, 4, 67]
+Player 2 discards a 6 to deck 1
+Player 2 draws a 2 from deck 2
+Player 2 current hand is: [2, 4, 67, 2]
+Player 2 discards a 4 to deck 1
+Player 2 draws a 130 from deck 2
+Player 2 current hand is: [67, 2, 2, 130]
+Player 2 discards a 67 to deck 1
+Player 2 draws a 15 from deck 2
+Player 2 current hand is: [2, 2, 130, 15]
+Player 2 discards a 130 to deck 1
+Player 2 draws a 34 from deck 2
+Player 2 current hand is: [15, 2, 2, 34]
+Player 2 discards a 15 to deck 1
+Player 2 draws a 6 from deck 2
+Player 2 current hand is: [2, 2, 34, 6]
+Player 2 discards a 34 to deck 1
+Player 2 draws a 4 from deck 2
+Player 2 current hand is: [6, 2, 2, 4]
+Player 2 discards a 6 to deck 1
+Player 2 draws a 67 from deck 2
+Player 2 current hand is: [2, 2, 4, 67]
+Player 2 discards a 4 to deck 1
+Player 2 draws a 130 from deck 2
+Player 2 current hand is: [67, 2, 2, 130]
+Player 2 discards a 67 to deck 1
+Player 2 draws a 15 from deck 2
+Player 2 current hand is: [2, 2, 130, 15]
+Player 2 discards a 130 to deck 1
+Player 2 draws a 34 from deck 2
+Player 2 current hand is: [15, 2, 2, 34]
+Player 2 discards a 15 to deck 1
+Player 2 draws a 6 from deck 2
+Player 2 current hand is: [2, 2, 34, 6]
+Player 2 discards a 34 to deck 1
+Player 2 draws a 4 from deck 2
+Player 2 current hand is: [6, 2, 2, 4]
+Player 2 discards a 6 to deck 1
+Player 2 draws a 67 from deck 2
+Player 2 current hand is: [2, 2, 4, 67]
+Player 2 discards a 4 to deck 1
+Player 2 draws a 130 from deck 2
+Player 2 current hand is: [67, 2, 2, 130]
+Player 2 discards a 67 to deck 1
+Player 2 draws a 15 from deck 2
+Player 2 current hand is: [2, 2, 130, 15]
+Player 2 discards a 130 to deck 1
+Player 2 draws a 34 from deck 2
+Player 2 current hand is: [15, 2, 2, 34]
+Player 2 discards a 15 to deck 1
+Player 2 draws a 6 from deck 2
+Player 2 current hand is: [2, 2, 34, 6]
+Player 2 discards a 34 to deck 1
+Player 2 draws a 4 from deck 2
+Player 2 current hand is: [6, 2, 2, 4]
+Player 2 discards a 6 to deck 1
+Player 2 draws a 67 from deck 2
+Player 2 current hand is: [2, 2, 4, 67]
+Player 2 discards a 4 to deck 1
+Player 2 draws a 130 from deck 2
+Player 2 current hand is: [67, 2, 2, 130]
 player 1 has informed player 2 that player 1 has won
 Player 2 exits
-Player 2 final hand: [6, 4, 67, 2]
+Player 2 final hand: [67, 2, 2, 130]
