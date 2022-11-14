@@ -1,4 +1,5 @@
-import java.io.*;
+package test;
+//import java.io.*;
 
 import org.junit.Test;
 
@@ -11,7 +12,7 @@ public class TestCardGame {
      */
     @Test
     public void testMainEmptyPack(){
-        InputStream sysInBackup = System.in;
+        //InputStream sysInBackup = System.in;
         
     }
 

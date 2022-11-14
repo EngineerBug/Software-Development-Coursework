@@ -1,0 +1,16 @@
+player 1 initial hand: [1, 1, 2, 4]
+Player 1 discards a 2 to deck 2
+Player 1 draws a 67 from deck 1
+Player 1 current hand is: [4, 1, 1, 67]
+Player 1 discards a 4 to deck 2
+Player 1 draws a 1 from deck 1
+Player 1 current hand is: [1, 1, 67, 1]
+Player 1 discards a 67 to deck 2
+Player 1 draws a 2 from deck 1
+Player 1 current hand is: [1, 1, 1, 2]
+Player 1 discards a 2 to deck 2
+Player 1 draws a 1 from deck 1
+Player 1 current hand is: [1, 1, 1, 1]
+Player 1 wins
+Player 1 exits
+Player 1 final hand: [1, 1, 1, 1]

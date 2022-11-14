@@ -1,5 +1,7 @@
+package main;
 import java.util.Scanner;
 import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicReference;
 import java.io.*;
 import java.util.ArrayList;
 
@@ -115,7 +117,7 @@ public class CardGame {
         }  
         catch(IOException e){
             //If there are not enough cards,the program 
-            //will empty to pack so that the game does not start.
+            //will empty to pack to garentee that the game does not start.
             pack.clear();
         }
     }
@@ -151,7 +153,7 @@ public class CardGame {
      */
     static void generateDecks(int playerCount){
         for (int i = 1; i <= playerCount; i++){
-            new CardDeck(i);
+            new AtomicReference<CardDeck>(new CardDeck(i));
         }
     }
     

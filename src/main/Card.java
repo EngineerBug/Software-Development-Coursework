@@ -1,3 +1,4 @@
+package main;
 public class Card implements Comparable<Card>{
     //private attributes
     private int value;

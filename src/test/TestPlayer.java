@@ -1,5 +1,10 @@
+package test;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
+
+import main.Card;
+import main.CardDeck;
+import main.Player;
 
 public class TestPlayer {
     /*
