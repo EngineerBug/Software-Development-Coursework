@@ -1,3 +1,7 @@
+import java.io.*;
+
+import org.junit.Test;
+
 public class TestCardGame {
     /*
      * testMainEmptyPack()
@@ -5,6 +9,11 @@ public class TestCardGame {
      * 
      * 
      */
+    @Test
+    public void testMainEmptyPack(){
+        InputStream sysInBackup = System.in;
+        
+    }
 
     /*
      * testMainFakePack()
