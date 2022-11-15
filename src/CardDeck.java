@@ -1,4 +1,4 @@
-package main;
+
 import java.util.concurrent.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;

@@ -1,7 +1,5 @@
-package test;
-import org.junit.Test;
 
-//import main.Card;
+import org.junit.Test;
 
 public class TestCard {
     /*

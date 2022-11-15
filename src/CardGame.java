@@ -1,4 +1,4 @@
-package main;
+
 import java.util.Scanner;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicReference;
@@ -16,6 +16,7 @@ import java.util.ArrayList;
  * https://www.youtube.com/watch?v=vZm0lHciFsQ
  * 
  * Important, compile using this command from outside the src file: javac -d ./bin/ ./src/*.java
+ * Important, complie tests using this command from src/test: javac -cp ./lib/junit-4.13.2.jar ./src/test/*.java
  */
 
 public class CardGame {
