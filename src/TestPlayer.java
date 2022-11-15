@@ -1,5 +1,4 @@
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 public class TestPlayer {
@@ -168,7 +167,66 @@ public class TestPlayer {
      * Create a Player with playerId = 1 with a hand 1111.
      * If the static variable winner is changed to 1, the test passes.
      */
-
+    @Test
+    public void testWinningAtStart(){
+        Player player = new Player(1,true);
+        for (int i = 1; i <= 4; i++){
+            player.getHand().add(new Card(1));
+        }
+        Thread newThread = new Thread(player);
+        newThread.run();
+        assert player.getWinner()==1;
+    }
+    /*
+     * testWinningAtStart2()
+     * Do players declare victory if they start the game with a winning hand?
+     * 
+     * Create a Player with playerId = 1 with a hand 2222.
+     * If the static variable winner is changed to 1, the test passes.
+     */
+    @Test
+    public void testWinningAtStart2(){
+        Player player = new Player(1,true);
+        for (int i = 1; i <= 4; i++){
+            player.getHand().add(new Card(2));
+        }
+        Thread newThread = new Thread(player);
+        newThread.run();
+        assert player.getWinner()==1;
+    }
+    /*
+     * testWinningAtStart3()
+     * Do players declare victory if they start the game with a winning hand?
+     * 
+     * Create a Player with playerId = 2 with a hand 2222.
+     * If the static variable winner is changed to 2, the test passes.
+     */
+    @Test
+    public void testWinningAtStart3(){
+        Player player = new Player(2,true);
+        for (int i = 1; i <= 4; i++){
+            player.getHand().add(new Card(2));
+        }
+        Thread newThread = new Thread(player);
+        newThread.run();
+        assert player.getWinner()==2;
+    }
+    /*
+     * testWinningAtStart4()
+     * Do players declare victory if they start the game with a winning hand?
+     * 
+     * Create a Player with playerId = 2 with a hand 3333.
+     * If the static variable winner is changed to 2, the test passes.
+     */
+    @Test
+    public void testWinningAtStart4(){
+        Player player = new Player(2,true);
+        for (int i = 1; i <= 4; i++){
+            player.getHand().add(new Card(3));
+        }
+        player.run();
+        assert player.getWinner()==2;
+    }
     /*
      * TestWinningAfterStart()
      * Do players declare victory if they draw a card and get a winning hand?
@@ -176,20 +234,121 @@ public class TestPlayer {
      * Create a Player with playerId = 1 with a hand 2111 and a cardDeck with a single (1) card.
      * If the player declares victory with a hand 1111, the test passes.
      */
-
+    @Test
+    public void TestWinningAfterStart(){
+        CardDeck deck = new CardDeck(1);
+        deck.getContents().add(new Card(1));
+        Player player = new Player(1,true);
+        player.getHand().add(new Card(2));
+        for (int i = 1; i <= 3; i++){
+            player.getHand().add(new Card(1));
+        }
+        player.run();
+        assert player.getWinner()==1;
+        for (int i = 0; i<4 ; i++){
+            assert player.getHand().poll().getValue() == 1;
+        }
+        assertTrue(player.getHand().isEmpty());
+    }
+    /*
+     * TestWinningAfterStart2()
+     * Do players declare victory if they draw a card and get a winning hand?
+     * 
+     * Create a Player with playerId = 2 with a hand 3222 and a cardDeck with a single (2) card.
+     * If the player declares victory with a hand 2222, the test passes.
+     */
+    @Test
+    public void TestWinningAfterStart2(){
+        new CardDeck(1);
+        CardDeck deck2 = new CardDeck(2);
+        deck2.getContents().add(new Card(2));
+        Player player = new Player(2,true);
+        player.getHand().add(new Card(3));
+        for (int i = 1; i <= 3; i++){
+            player.getHand().add(new Card(2));
+        }
+        player.run();
+        assert player.getWinner()==2;
+        for (int i = 0; i<4 ; i++){
+            assert player.getHand().poll().getValue() == 2;
+        }
+        assertTrue(player.getHand().isEmpty());
+    }
     /*
      * TestLosingAtStart()
      * Do players concede defeat if another starts with a winning hand?
      * 
-     * Create a Player with playerId = 1 and hand 2222, an empty cardDeck, and set winner = 2.
+     * Create a Player with playerId = 1 and hand 1234, an empty cardDeck, and set winner = 2.
      * If the player does not try to take a card, the test passes.
      */
-
+    @Test
+    public void TestLosingAtStart(){
+        new CardDeck(1);
+        new CardDeck(2);
+        Player player = new Player(1,true);
+        for (int i = 1; i <= 4; i++){
+            player.getHand().add(new Card(i));
+        }
+        player.setWinner(2);
+        player.run();
+        for (int i = 1; i<=4 ; i++){
+            assert player.getHand().poll().getValue() == i;
+        }
+        assertTrue(player.getHand().isEmpty());
+    }
+    /*
+     * TestLosingAtStart2()
+     * Do players concede defeat if another starts with a winning hand?
+     * 
+     * Create a Player with playerId = 2 and hand 1234, an empty cardDeck, and set winner = 3.
+     * If the player does not try to take a card, the test passes.
+     */
+    @Test
+    public void TestLosingAtStart2(){
+        new CardDeck(1);
+        new CardDeck(2);
+        Player player = new Player(2,true);
+        for (int i = 1; i <= 4; i++){
+            player.getHand().add(new Card(i));
+        }
+        player.setWinner(3);
+        player.run();
+        for (int i = 1; i<=4 ; i++){
+            assert player.getHand().poll().getValue() == i;
+        }
+        assertTrue(player.getHand().isEmpty());
+    }
     /*
      * TestLosingAfterStart()
      * Do players concede defear if another obtains a winning hand?
      * 
-     * Create a Player with playerId = 1, a hand of 2222, a cardDeck with 3333, and after one second set winner = 2.
-     * If the player does not try to draw from an empty deck, the test passes.
+     * Create a Player with playerId = 1, a hand of 1234, a cardDeck with 5, and after one second set winner = 2.
+     * If the player does draw from the deck, and then the thread stops running, the test passes.
+     */
+    @Test
+    public void TestLosingAfterStart(){
+        new CardDeck(1);
+        CardDeck deck2 = new CardDeck(2);
+        deck2.getContents().add(new Card(5));
+        Player player = new Player(1,true);
+        for (int i = 1; i <= 4; i++){
+            player.getHand().add(new Card(i));
+        }
+        Thread thread = new Thread(player);
+        thread.run();
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        player.setWinner(2);
+        assertTrue(!thread.isAlive());
+    }
+    /*
+     * TestLosingAfterStart2()
+     * Do players concede defear if another obtains a winning hand?
+     * 
+     * Create a Player with playerId = 2, a hand of 1234, a cardDeck with 5, and after one second set winner = 3.
+     * If the player does draw from the deck, and then the thread stops running, the test passes.
      */
 }
