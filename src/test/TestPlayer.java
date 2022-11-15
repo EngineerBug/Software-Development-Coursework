@@ -1,10 +1,10 @@
 package test;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import org.junit.Test;
 
-import main.Card;
-import main.CardDeck;
-import main.Player;
+//import main.Player;
+
+import main.*;
 
 public class TestPlayer {
     /*
