@@ -21,8 +21,6 @@ import java.util.ArrayList;
 
 public class CardGame {
     public static void main(String[] args){
-        System.out.println("Hello Patryk, what do you think of my code?");
-        
         //create variables
         //this variable is an integer so that we can use the Integer.valueOf() method.
         Integer playerCount = 0;

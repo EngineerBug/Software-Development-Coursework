@@ -351,4 +351,23 @@ public class TestPlayer {
      * Create a Player with playerId = 2, a hand of 1234, a cardDeck with 5, and after one second set winner = 3.
      * If the player does draw from the deck, and then the thread stops running, the test passes.
      */
+    @Test
+    public void TestLosingAfterStart2(){
+        new CardDeck(1);
+        CardDeck deck2 = new CardDeck(2);
+        deck2.getContents().add(new Card(5));
+        Player player = new Player(2,true);
+        for (int i = 1; i <= 4; i++){
+            player.getHand().add(new Card(i));
+        }
+        Thread thread = new Thread(player);
+        thread.run();
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        player.setWinner(3);
+        assertTrue(!thread.isAlive());
+    }
 }

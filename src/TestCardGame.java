@@ -1,4 +1,9 @@
+import static org.junit.Assert.assertEquals;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.NoSuchElementException;
+import java.util.Scanner;
 
 import org.junit.Test;
 
@@ -9,11 +14,11 @@ public class TestCardGame {
      * 
      * 
      */
-    @Test
-    public void testMainEmptyPack(){
-        //InputStream sysInBackup = System.in;
-        
-    }
+    //@Test (expected = NoSuchElementException.class)
+    //public void testMainEmptyPack(){
+    //    Scanner scanner = new Scanner("empty.txt");
+    //    CardGame.getPack(scanner);
+    //}
 
     /*
      * testMainFakePack()
