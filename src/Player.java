@@ -78,9 +78,18 @@ public class Player implements Runnable{
     public BlockingQueue<Card> getHand(){
         return hand;
     }
+    //this method is used in testing
+    public int getWinner(){
+        return winner;
+    }
+    //this method is used in testing
+    public void setWinner(int winner){
+        this.winner = winner;
+    }
     public static ArrayList<Player> getPlayers(){
         return players;
     }
+    
 
     public synchronized Card discardCard(){
         //go through the hand, moving prefered cards to the back until one is ok to discard.
