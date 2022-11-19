@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * https://www.youtube.com/watch?v=vZm0lHciFsQ
  * 
  * Important, compile using this command from outside the src file: javac -d ./bin/ ./src/*.java
- * Important, complie tests using this command from src/test: javac -cp ./lib/junit-4.13.2.jar ./src/test/*.java
+ * Important, complie tests using this command from SDC: javac -cp ./lib/junit-4.13.2.jar -d ./bin/ ./src/*.java
  */
 
 public class CardGame {
@@ -33,15 +33,7 @@ public class CardGame {
         while (!value){
             //Take user input for player number and pack file
             playerCount = getPlayers(scanner);
-            generatePack(getPack(scanner), pack, playerCount);
-
-            //check if the inputs are valid
-            if (playerCount > 0 && pack.size() == 8*playerCount){
-                System.out.println(playerCount.toString()+" players are playing with "+pack.size()+" cards.");
-                value = true;
-            }else{
-                System.out.println("Required card count: "+8*playerCount+", you put: "+pack.size());
-            }
+            value = generatePack(getPack(scanner), pack, playerCount);
         }
         //initialse the deck objects
         generateDecks(playerCount);
@@ -85,7 +77,7 @@ public class CardGame {
 
         //Take user input for pack file
         System.out.println("Enter pack file: ");
-        String output = scanPack.nextLine(); //throws java.until.NoSuchElementException: No line found
+        String output = scanPack.nextLine(); //throws java.util.NoSuchElementException: No line found
 
         return output;
     }
@@ -97,7 +89,7 @@ public class CardGame {
      * @param String filename: the name of the file with numbers stored in it.
      * @returns none
      */
-    static void generatePack(String fileName, BlockingQueue<Card> pack, int playerCount){
+    static Boolean generatePack(String fileName, BlockingQueue<Card> pack, Integer playerCount){
         try{
             //create an object which can read the file     
             BufferedReader br = new BufferedReader(
@@ -116,8 +108,19 @@ public class CardGame {
         }  
         catch(IOException e){
             //If there are not enough cards,the program 
-            //will empty to pack to garentee that the game does not start.
+            //will empty to pack to guarantee that the game does not start.
             pack.clear();
+        }
+        catch(NumberFormatException e){
+            pack.clear();
+        }
+        //Checks to see that card pack given is not empty and has at least enough cards for the number of players
+        if (playerCount > 0 && pack.size() == 8*playerCount){
+            System.out.println(playerCount.toString()+" players are playing with "+pack.size()+" cards.");
+            return true;
+        }else{
+            System.out.println("Required card count: "+8*playerCount+", your file has the wrong amount.");
+            return false;
         }
     }
 
