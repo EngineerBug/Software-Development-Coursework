@@ -10,7 +10,6 @@ import org.junit.AfterClass;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -123,7 +122,7 @@ public class TestCardGame {
     }
     /*
      * testGetPlayers()
-     * 
+     * Does the method ask for an input and read it correctly? 
      */
     @Test
     public void testGetPlayers(){
@@ -133,6 +132,7 @@ public class TestCardGame {
     }
     /*
      * testGetPack()
+     * Does the method ask for an input and read it correctly? 
      */
     @Test
     public void testGetPack(){
@@ -141,6 +141,7 @@ public class TestCardGame {
     }
     /*
      * testGeneratePlayerThreads()
+     * Does the method create the given number of player threads and save them? 
      */
     @Test
     public void testGeneratePlayerThreads(){
