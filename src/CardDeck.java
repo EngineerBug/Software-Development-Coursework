@@ -30,7 +30,7 @@ public class CardDeck {
         //assign an Id
         this.deckId = deckId;
         //initialise the contents
-        contents = new PriorityBlockingQueue<Card>();
+        contents = new LinkedBlockingDeque<Card>();
         //add the deck to the static arrayList
         decks.add(this);
     }
