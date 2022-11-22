@@ -3,10 +3,8 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 
 import org.junit.BeforeClass;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.After;
-import org.junit.AfterClass;
 
 import java.io.BufferedWriter;
 import java.io.File;

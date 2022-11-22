@@ -1,2 +1,7 @@
 bin/*.class
+bin/*.txt
 src/*.class
+out/*
+.idea/*
+*.txt
+Software-Development-Coursework.iml
