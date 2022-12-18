@@ -1,5 +1,6 @@
 # Software-Development-Coursework
 A threaded Java implementation of a simple card game.
+Received a final mark of 95%.
 
 Running the test suite:
   - Open the project in intellij.
